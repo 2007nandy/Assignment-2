@@ -1,0 +1,7 @@
+Output:
+Array index out of range!
+
+Explanation:
+The statement arr[3] tries to access the 4th element of an array that only has indices 0–2.
+Hence, an ArrayIndexOutOfBoundsException occurs first — the division by zero never executes because the program already failed at array access.
+Therefore, the second catch block executes.

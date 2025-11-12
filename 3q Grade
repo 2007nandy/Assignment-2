@@ -1,25 +1,47 @@
+import java.util.Scanner;
 class InvalidGradeException extends Exception {
     public InvalidGradeException(String message) {
         super(message);
     }
 }
-
 public class StudentGrade {
     static void checkGrade(int marks) throws InvalidGradeException {
         if (marks > 100)
             throw new InvalidGradeException("Marks cannot exceed 100!");
+        else if (marks < 0)
+            throw new InvalidGradeException("Marks cannot be negative!");
         else
             System.out.println("Valid marks: " + marks);
     }
-
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter student marks: ");
+        int marks = sc.nextInt();
+
         try {
-            checkGrade(120);
+            checkGrade(marks);
         } catch (InvalidGradeException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        sc.close();
     }
 }
 
 Output:
+Case 1: Valid Input
+Copy code
+
+Enter student marks: 85
+Valid marks: 85
+ 
+Case 2: Marks Greater Than 100
+Copy code
+
+Enter student marks: 120
 Error: Marks cannot exceed 100!
+
+Case 3: Marks Less Than 0
+Copy code
+
+Enter student marks: -10
+Error: Marks cannot be negative!
